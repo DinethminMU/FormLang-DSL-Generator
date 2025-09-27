@@ -1,0 +1,30 @@
+form Registration {
+  meta author = "IT23172814";
+
+  section infomation {
+    field name: text pattern="[A-Za-z]+" required;
+    field password: password required pattern=".{6,}";
+    field age: number min=18 max=99 required;
+    field email: email required;
+    field gender: radio ["Male", "Female", "Other"] required;
+    field dob: date min="2000-01-01" max="2025-12-31" required;
+    field bio: textarea rows=4 cols=40 default="User bio";
+    field country: dropdown ["Sri Lanka", "China", "USA"] required;
+    field resume: file accept=".pdf" required;
+    field profilePic: file accept="image/*";
+    field Conditions: checkbox default=false;
+    field module: dropdown["PP","OS","DSA"] required";
+  }
+
+  validate {
+    if age < 18 {
+      error "You must be at least 18 years old.";
+    }
+    if password == 0 {
+      error "Password cannot be empty.";
+    }
+    if email == 0 {
+      error "Email cannot be empty.";
+    }
+  }
+}

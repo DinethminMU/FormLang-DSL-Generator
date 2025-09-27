@@ -1,0 +1,21 @@
+form Registration {
+  meta author = "SE2062 Team";
+
+  section PersonalDetails {
+    field fullName: text required;
+    field email: email required;
+    field age: number min=18 max=99;
+
+  }
+
+  section Preferences {
+    field gender: radio ["Male", "Female", "Other"];
+    field newsletter: checkbox default=true;
+  }
+
+  validate {
+    if age < 18 {
+      error "You must be at least 18.";
+    }
+  }
+}
